@@ -580,8 +580,8 @@ sensor:
       return (id(sunsynk_inverter_output_power).state + id(sunsynk_grid_power).state - id(sunsynk_aux_output_power).state);
     #update_interval: 5s
 
-  - platform: template                     # Nonessential Power 172 - 167
-    name: "${friendly_name} Non-Essential Power"
+  - platform: template                     # Nonessential Power(House Load) 172 - 167
+    name: "${friendly_name} House Power"
     unit_of_measurement: "W"
     accuracy_decimals: 0
     device_class: power
@@ -590,8 +590,8 @@ sensor:
       return (id(sunsynk_grid_ct_power).state - id(sunsynk_grid_ld_power).state);
     #update_interval: 5s
 
-  - platform: template                     # Nonessential Power(House Load) 175 - 167
-    name: "${friendly_name} House Power"
+  - platform: template                     # Nonessential Power 175 - 167
+    name: "${friendly_name} Non-Essential Power"
     unit_of_measurement: "W"
     accuracy_decimals: 0
     device_class: power
