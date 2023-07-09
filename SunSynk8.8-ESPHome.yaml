@@ -30,7 +30,7 @@ api:
  
 # OTA Updates Password 
 ota:
-  password: "ffcddbd8910e02e1d8edc2b27acb797d"
+  password: !secret sunsynk_ota_password
 
 # Enable Webserver
 web_server:
