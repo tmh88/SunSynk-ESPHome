@@ -77,7 +77,7 @@ modbus_controller:
     address: 0x01
     modbus_id: sunsynk_modbus
     setup_priority: -10
-    update_interval: "2s"
+    update_interval: "5s"
     command_throttle: "50ms"
 
 ############################################### BINARY SENSORS ###############################################
@@ -855,6 +855,7 @@ sensor:
     register_type: holding
     skip_updates: ${settings_skipped_updates}
     address: 268
+    unit_of_measurement: "%"
     value_type: U_WORD
 
   - platform: modbus_controller          # 269 Settings SoC Timezone2
@@ -864,6 +865,7 @@ sensor:
     register_type: holding
     skip_updates: ${settings_skipped_updates}
     address: 269
+    unit_of_measurement: "%"
     value_type: U_WORD
 
   - platform: modbus_controller          # 270 Settings SoC Timezone3
@@ -873,6 +875,7 @@ sensor:
     register_type: holding
     skip_updates: ${settings_skipped_updates}
     address: 270
+    unit_of_measurement: "%"
     value_type: U_WORD
 
   - platform: modbus_controller          # 271 Settings SoC Timezone4
@@ -882,6 +885,7 @@ sensor:
     register_type: holding
     skip_updates: ${settings_skipped_updates}
     address: 271
+    unit_of_measurement: "%"
     value_type: U_WORD
 
   - platform: modbus_controller          # 272 Settings SoC Timezone5
@@ -891,6 +895,7 @@ sensor:
     register_type: holding
     skip_updates: ${settings_skipped_updates}
     address: 272
+    unit_of_measurement: "%"
     value_type: U_WORD
 
   - platform: modbus_controller          # 273 Settings SoC Timezone6
@@ -900,6 +905,7 @@ sensor:
     register_type: holding
     skip_updates: ${settings_skipped_updates}
     address: 273
+    unit_of_measurement: "%"
     value_type: U_WORD
 
   - platform: modbus_controller          # 274 Settings Grid Charge Timezone1
@@ -949,6 +955,66 @@ sensor:
     register_type: holding
     skip_updates: ${settings_skipped_updates}
     address: 279
+
+  - platform: modbus_controller          # 256 # Settings Power Timezone1
+    modbus_controller_id: sunsynk
+    name: "${friendly_name} Setting Power Timezone1"
+    id: sunsynk_setting_power_timezone1
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    address: 256
+    unit_of_measurement: "W"
+    value_type: U_WORD
+    
+  - platform: modbus_controller          # 257 # Settings Power Timezone2
+    modbus_controller_id: sunsynk
+    name: "${friendly_name} Setting Power Timezone2"
+    id: sunsynk_setting_power_timezone2
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    address: 257
+    unit_of_measurement: "W"
+    value_type: U_WORD
+    
+  - platform: modbus_controller          # 258 # Settings Power Timezone3
+    modbus_controller_id: sunsynk
+    name: "${friendly_name} Setting Power Timezone3"
+    id: sunsynk_setting_power_timezone3
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    address: 258
+    unit_of_measurement: "W"
+    value_type: U_WORD
+    
+  - platform: modbus_controller          # 259 # Settings Power Timezone4
+    modbus_controller_id: sunsynk
+    name: "${friendly_name} Setting Power Timezone4"
+    id: sunsynk_setting_power_timezone4
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    address: 259
+    unit_of_measurement: "W"
+    value_type: U_WORD
+    
+  - platform: modbus_controller          # 260 # Settings Power Timezone5
+    modbus_controller_id: sunsynk
+    name: "${friendly_name} Setting Power Timezone5"
+    id: sunsynk_setting_power_timezone5
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    address: 260
+    unit_of_measurement: "W"
+    value_type: U_WORD
+    
+  - platform: modbus_controller          # 261 # Settings Power Timezone6
+    modbus_controller_id: sunsynk
+    name: "${friendly_name} Setting Power Timezone6"
+    id: sunsynk_setting_power_timezone6
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    address: 261
+    unit_of_measurement: "W"
+    value_type: U_WORD
 
 ################################################ WRITE SETTINGS ################################################
 
@@ -1123,7 +1189,82 @@ number:
     min_value: 0
     max_value: 100
     step: 5
-    value_type: U_WORD  
+    value_type: U_WORD
+    
+  - platform: modbus_controller         # Set Power Timezone1
+    use_write_multiple: true
+    modbus_controller_id: sunsynk
+    id: sunsynk_set_power_timezone1
+    name: "${friendly_name} Set Power Timezone1"
+    unit_of_measurement: "W"
+    address: 256
+    min_value: 0
+    max_value: 8000
+    step: 50
+    value_type: U_WORD
+    
+  - platform: modbus_controller         # Set Power Timezone2
+    use_write_multiple: true
+    modbus_controller_id: sunsynk
+    id: sunsynk_set_power_timezone2
+    name: "${friendly_name} Set Power Timezone2"
+    unit_of_measurement: "W"
+    address: 257
+    min_value: 0
+    max_value: 8000
+    step: 50
+    value_type: U_WORD
+ 
+  - platform: modbus_controller         # Set Power Timezone3
+    use_write_multiple: true
+    modbus_controller_id: sunsynk
+    id: sunsynk_set_power_timezone3
+    name: "${friendly_name} Set Power Timezone3"
+    unit_of_measurement: "W"
+    address: 258
+    min_value: 0
+    max_value: 8000
+    step: 50
+    value_type: U_WORD
+
+  - platform: modbus_controller         # Set Power Timezone4
+    use_write_multiple: true
+    modbus_controller_id: sunsynk
+    id: sunsynk_set_power_timezone4
+    name: "${friendly_name} Set Power Timezone4"
+    unit_of_measurement: "W"
+    address: 259
+    min_value: 0
+    max_value: 8000
+    step: 50
+    value_type: U_WORD
+
+  - platform: modbus_controller         # Set Power Timezone5
+    use_write_multiple: true
+    modbus_controller_id: sunsynk
+    id: sunsynk_set_power_timezone5
+    name: "${friendly_name} Set Power Timezone5"
+    unit_of_measurement: "W"
+    address: 260
+    min_value: 0
+    max_value: 8000
+    step: 50
+    value_type: U_WORD
+
+  - platform: modbus_controller         # Set Power Timezone6
+    use_write_multiple: true
+    modbus_controller_id: sunsynk
+    id: sunsynk_set_power_timezone6
+    name: "${friendly_name} Set Power Timezone6"
+    unit_of_measurement: "W"
+    address: 261
+    min_value: 0
+    max_value: 8000
+    step: 50
+    value_type: U_WORD
+
+ 
+    
 
 ################################################ TEMPLATE SENSORS ################################################
 
