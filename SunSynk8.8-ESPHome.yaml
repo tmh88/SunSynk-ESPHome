@@ -4,7 +4,7 @@ substitutions:
   device_name: "sunsynk"
   friendly_name: "SunSynk"
   device_description: "Sunsynk RS485 Logger"
-  settings_skipped_updates: "30"
+  settings_skipped_updates: "4"
 
 # Icon
   main_icon: "solar-power"
