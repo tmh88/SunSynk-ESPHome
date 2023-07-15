@@ -558,7 +558,7 @@ sensor:
     state_class: measurement
     lambda: |-
       return (id(sunsynk_inverter_output_power).state + id(sunsynk_grid_power).state - id(sunsynk_aux_output_power).state);
-    #update_interval: 5s
+    update_interval: 2s
 
   - platform: template                     # UPS Power (Essential 1 Power) based on register 175 + 167 - 166
     name: "${friendly_name} UPS Power"
@@ -568,7 +568,7 @@ sensor:
     state_class: measurement
     lambda: |-
       return (id(sunsynk_inverter_output_power).state + id(sunsynk_grid_ld_power).state - id(sunsynk_aux_output_power).state);
-    #update_interval: 5s
+    update_interval: 2s
 
   - platform: template                     # Essential 2 Power) based on register 175 + 169 - 166
     name: "${friendly_name} Essential 2 Power"
@@ -578,7 +578,7 @@ sensor:
     state_class: measurement
     lambda: |-
       return (id(sunsynk_inverter_output_power).state + id(sunsynk_grid_power).state - id(sunsynk_aux_output_power).state);
-    #update_interval: 5s
+    update_interval: 2s
 
   - platform: template                     # Nonessential Power(House Load) 172 - 167
     name: "${friendly_name} House Power"
@@ -588,7 +588,7 @@ sensor:
     state_class: measurement
     lambda: |-
       return (id(sunsynk_grid_ct_power).state - id(sunsynk_grid_ld_power).state);
-    #update_interval: 5s
+    update_interval: 2s
 
   - platform: template                     # Nonessential Power 175 - 167
     name: "${friendly_name} Non-Essential Power"
@@ -598,7 +598,7 @@ sensor:
     state_class: measurement
     lambda: |-
       return (id(sunsynk_inverter_output_power).state - id(sunsynk_grid_ld_power).state);
-    #update_interval: 5s
+    update_interval: 2s
 
 #########
 # Energy
