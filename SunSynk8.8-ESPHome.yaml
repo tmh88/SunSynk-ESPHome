@@ -532,7 +532,7 @@ sensor:
     state_class: measurement
     lambda: |-
       return (id(sunsynk_pv1_power).state + id(sunsynk_pv2_power).state);
-    #update_interval: 5s
+    update_interval: 2s
 
 
 ###################
