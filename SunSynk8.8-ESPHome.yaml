@@ -105,6 +105,12 @@ sensor:
 ##########
 # General
 ##########
+
+  - platform: wifi_signal                  # WiFi Signal Sensor
+    name: "${friendly_name} WiFi Status"
+    update_interval: 60s
+    entity_category: diagnostic
+
   - platform: modbus_controller            # 013 Firmware Control Board
     modbus_controller_id: sunsynk
     name: "${friendly_name} Firmware Control Board"
@@ -112,6 +118,7 @@ sensor:
     register_type: holding
     skip_updates: ${settings_skipped_updates}
     address: 13
+    entity_category: diagnostic
 
   - platform: modbus_controller            # 014 Firmware Comms Board
     modbus_controller_id: sunsynk
@@ -120,6 +127,7 @@ sensor:
     register_type: holding
     skip_updates: ${settings_skipped_updates}
     address: 14
+    entity_category: diagnostic
 
   - platform: modbus_controller            # 090 DC Transformer Temperature
     modbus_controller_id: sunsynk
@@ -443,10 +451,10 @@ sensor:
     state_class: measurement
     value_type: U_WORD
 
-  - platform: modbus_controller            # 109 DC1 Voltage
+  - platform: modbus_controller            # 109 PV1 Voltage
     modbus_controller_id: sunsynk
-    name: "${friendly_name} DC1 Voltage"
-    id: sunsynk_dc1_voltage
+    name: "${friendly_name} PV1 Voltage"
+    id: sunsynk_pv1_voltage
     register_type: holding
     address: 109
     unit_of_measurement: "V"
@@ -456,10 +464,10 @@ sensor:
     filters:
       - multiply: 0.1
 
-  - platform: modbus_controller            # 110 DC1 Output Current
+  - platform: modbus_controller            # 110 PV1 Output Current
     modbus_controller_id: sunsynk
-    name: "${friendly_name} DC1 Current"
-    id: sunsynk_dc1_current
+    name: "${friendly_name} PV1 Current"
+    id: sunsynk_pv1_current
     register_type: holding
     address: 110
     unit_of_measurement: "A"
@@ -482,10 +490,10 @@ sensor:
     state_class: measurement
     value_type: U_WORD
 
-  - platform: modbus_controller            # 111 DC2 Voltage
+  - platform: modbus_controller            # 111 PV2 Voltage
     modbus_controller_id: sunsynk
-    name: "${friendly_name} DC2 Voltage"
-    id: sunsynk_dc2_voltage
+    name: "${friendly_name} PV2 Voltage"
+    id: sunsynk_pv2_voltage
     register_type: holding
     address: 111
     unit_of_measurement: "V"
@@ -495,10 +503,10 @@ sensor:
     filters:
       - multiply: 0.1
 
-  - platform: modbus_controller            # 112 DC2 Output Current
+  - platform: modbus_controller            # 112 PV2 Output Current
     modbus_controller_id: sunsynk
-    name: "${friendly_name} DC2 Current"
-    id: sunsynk_dc2_current
+    name: "${friendly_name} PV2 Current"
+    id: sunsynk_pv2_current
     register_type: holding
     address: 112
     unit_of_measurement: "A"
@@ -843,6 +851,7 @@ sensor:
     address: 268
     unit_of_measurement: "%"
     value_type: U_WORD
+    icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 269 Settings SoC Timezone2
     modbus_controller_id: sunsynk
@@ -853,6 +862,7 @@ sensor:
     address: 269
     unit_of_measurement: "%"
     value_type: U_WORD
+    icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 270 Settings SoC Timezone3
     modbus_controller_id: sunsynk
@@ -863,6 +873,7 @@ sensor:
     address: 270
     unit_of_measurement: "%"
     value_type: U_WORD
+    icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 271 Settings SoC Timezone4
     modbus_controller_id: sunsynk
@@ -873,6 +884,7 @@ sensor:
     address: 271
     unit_of_measurement: "%"
     value_type: U_WORD
+    icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 272 Settings SoC Timezone5
     modbus_controller_id: sunsynk
@@ -883,6 +895,7 @@ sensor:
     address: 272
     unit_of_measurement: "%"
     value_type: U_WORD
+    icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 273 Settings SoC Timezone6
     modbus_controller_id: sunsynk
@@ -893,10 +906,11 @@ sensor:
     address: 273
     unit_of_measurement: "%"
     value_type: U_WORD
+    icon: "mdi:battery-clock-outline"
 
   - platform: modbus_controller          # 274 Settings Grid Charge Timezone1
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Grid Charge Timezone1"
+#    name: "${friendly_name} Setting Grid Charge Timezone1"
     id: sunsynk_setting_grid_charge_timezone1
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -904,7 +918,7 @@ sensor:
 
   - platform: modbus_controller          # 275 Settings Grid Charge Timezone2
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Grid Charge Timezone2"
+#    name: "${friendly_name} Setting Grid Charge Timezone2"
     id: sunsynk_setting_grid_charge_timezone2
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -912,7 +926,7 @@ sensor:
     
   - platform: modbus_controller          # 276 Settings Grid Charge Timezone3
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Grid Charge Timezone3"
+#    name: "${friendly_name} Setting Grid Charge Timezone3"
     id: sunsynk_setting_grid_charge_timezone3
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -920,7 +934,7 @@ sensor:
     
   - platform: modbus_controller          # 277 Settings Grid Charge Timezone4
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Grid Charge Timezone4"
+#    name: "${friendly_name} Setting Grid Charge Timezone4"
     id: sunsynk_setting_grid_charge_timezone4
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -928,7 +942,7 @@ sensor:
     
   - platform: modbus_controller          # 278 Settings Grid Charge Timezone5
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Grid Charge Timezone5"
+#    name: "${friendly_name} Setting Grid Charge Timezone5"
     id: sunsynk_setting_grid_charge_timezone5
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -936,7 +950,7 @@ sensor:
     
   - platform: modbus_controller          # 279 Settings Grid Charge Timezone6
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Grid Charge Timezone6"
+#    name: "${friendly_name} Setting Grid Charge Timezone6"
     id: sunsynk_setting_grid_charge_timezone6
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -951,6 +965,7 @@ sensor:
     address: 256
     unit_of_measurement: "W"
     value_type: U_WORD
+    icon: "mdi:flash"
     
   - platform: modbus_controller          # 257 # Settings Power Timezone2
     modbus_controller_id: sunsynk
@@ -961,6 +976,7 @@ sensor:
     address: 257
     unit_of_measurement: "W"
     value_type: U_WORD
+    icon: "mdi:flash"
     
   - platform: modbus_controller          # 258 # Settings Power Timezone3
     modbus_controller_id: sunsynk
@@ -971,6 +987,7 @@ sensor:
     address: 258
     unit_of_measurement: "W"
     value_type: U_WORD
+    icon: "mdi:flash"
     
   - platform: modbus_controller          # 259 # Settings Power Timezone4
     modbus_controller_id: sunsynk
@@ -981,6 +998,7 @@ sensor:
     address: 259
     unit_of_measurement: "W"
     value_type: U_WORD
+    icon: "mdi:flash"
     
   - platform: modbus_controller          # 260 # Settings Power Timezone5
     modbus_controller_id: sunsynk
@@ -991,6 +1009,7 @@ sensor:
     address: 260
     unit_of_measurement: "W"
     value_type: U_WORD
+    icon: "mdi:flash"
     
   - platform: modbus_controller          # 261 # Settings Power Timezone6
     modbus_controller_id: sunsynk
@@ -1001,6 +1020,7 @@ sensor:
     address: 261
     unit_of_measurement: "W"
     value_type: U_WORD
+    icon: "mdi:flash"
 
   - platform: modbus_controller        # 255 Grid Peak Shaving RAW register value for SELECT SENSORS below
     modbus_controller_id: sunsynk
@@ -1016,100 +1036,81 @@ switch:
   - platform: modbus_controller          # 247 Toggle Solar Sell
     use_write_multiple: true
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Toggle Solar sell"
+    name: "${friendly_name} Solar sell"
     id: sunsynk_toggle_solar_sell
     register_type: holding
     address: 247
     bitmask: 1
-    entity_category: config
     icon: "mdi:toggle-switch"
 
   - platform: modbus_controller          # 248 Toggle System Timer
     use_write_multiple: true
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Toggle System Timer" 
+    name: "${friendly_name} System Timer" 
     id: sunsynk_toggle_Time_of_Use
     register_type: holding
     address: 248
     bitmask: 1
-    entity_category: config
-    icon: "mdi:toggle-switch"
-
-  - platform: modbus_controller          # 243 Priority Load
-    use_write_multiple: true
-    modbus_controller_id: sunsynk
-    name: "${friendly_name} Toggle Priority Load" 
-    id: sunsynk_toggle_priority_load
-    register_type: holding
-    address: 243
-    bitmask: 1
-    entity_category: config
     icon: "mdi:toggle-switch"
 
   - platform: modbus_controller          # 274 Toggle Grid Charge Timezone1
     use_write_multiple: true
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Toggle Grid Charge Timezone1"
+    name: "${friendly_name} Grid Charge Timezone1"
     id: sunsynk_toggle_grid_charge_timezone1
     register_type: holding
     address: 274
     bitmask: 1
-    entity_category: config
     icon: "mdi:toggle-switch"
 
   - platform: modbus_controller          # 275 Toggle Grid Charge Timezone2
     modbus_controller_id: sunsynk
     use_write_multiple: true
-    name: "${friendly_name} Toggle Grid Charge Timezone2"
+    name: "${friendly_name} Grid Charge Timezone2"
     id: sunsynk_toggle_grid_charge_timezone2
     register_type: holding
     address: 275
     bitmask: 1
-    entity_category: config
     icon: "mdi:toggle-switch"
 
   - platform: modbus_controller          # 276 Toggle Grid Charge Timezone3
     modbus_controller_id: sunsynk
     use_write_multiple: true
-    name: "${friendly_name} Toggle Grid Charge Timezone3"
+    name: "${friendly_name} Grid Charge Timezone3"
     id: sunsynk_toggle_grid_charge_timezone3
     register_type: holding
     address: 276
     bitmask: 1
-    entity_category: config
     icon: "mdi:toggle-switch"
 
   - platform: modbus_controller          # 277 Toggle Grid Charge Timezone4
     modbus_controller_id: sunsynk
     use_write_multiple: true
-    name: "${friendly_name} Toggle Grid Charge Timezone4"
+    name: "${friendly_name} Grid Charge Timezone4"
     id: sunsynk_toggle_grid_charge_timezone4
     register_type: holding
     address: 277
     bitmask: 1
-    entity_category: config
     icon: "mdi:toggle-switch"
 
   - platform: modbus_controller          # 278 Toggle Grid Charge Timezone5
     modbus_controller_id: sunsynk
     use_write_multiple: true
-    name: "${friendly_name} Toggle Grid Charge Timezone5"
+    name: "${friendly_name} Grid Charge Timezone5"
     id: sunsynk_toggle_grid_charge_timezone5
     register_type: holding
     address: 278
     bitmask: 1
-    entity_category: config
     icon: "mdi:toggle-switch"
 
   - platform: modbus_controller          # 279 Toggle Grid Charge Timezone6
     modbus_controller_id: sunsynk
     use_write_multiple: true
-    name: "${friendly_name} Toggle Grid Charge Timezone6"
+    name: "${friendly_name} Grid Charge Timezone6"
     id: sunsynk_toggle_grid_charge_timezone6
     register_type: holding
     address: 279
     bitmask: 1
-    entity_category: config
     icon: "mdi:toggle-switch"
 
 number:
@@ -1123,7 +1124,7 @@ number:
     min_value: 10
     max_value: 100
     step: 5
-    value_type: U_WORD  
+    value_type: U_WORD
 
   - platform: modbus_controller         # 269 Settings SoC Timezone2
     use_write_multiple: true
@@ -1135,7 +1136,7 @@ number:
     min_value: 10
     max_value: 100
     step: 5
-    value_type: U_WORD  
+    value_type: U_WORD
 
   - platform: modbus_controller         # 270 Settings SoC Timezone3
     use_write_multiple: true
@@ -1147,7 +1148,7 @@ number:
     min_value: 10
     max_value: 100
     step: 5
-    value_type: U_WORD  
+    value_type: U_WORD
 
   - platform: modbus_controller         # 271 Settings SoC Timezone4
     use_write_multiple: true
@@ -1159,7 +1160,7 @@ number:
     min_value: 10
     max_value: 100
     step: 5
-    value_type: U_WORD  
+    value_type: U_WORD
 
   - platform: modbus_controller         # 272 Settings SoC Timezone5
     use_write_multiple: true
@@ -1171,7 +1172,7 @@ number:
     min_value: 10
     max_value: 100
     step: 5
-    value_type: U_WORD  
+    value_type: U_WORD
 
   - platform: modbus_controller         # 273 Settings SoC Timezone6
     use_write_multiple: true
@@ -1267,7 +1268,8 @@ number:
     min_value: 0
     max_value: 60                       #House Fuse 60A
     step: 5
-    value_type: U_WORD  
+    value_type: U_WORD
+    entity_category: config
 
   - platform: modbus_controller         # 210 Battery Max Charge current
     use_write_multiple: true
@@ -1279,7 +1281,8 @@ number:
     min_value: 0
     max_value: 100                      # 2 x SunSynk IP65 L5.1 Batteries 100A Charge Limit
     step: 5
-    value_type: U_WORD  
+    value_type: U_WORD
+    entity_category: config
 
   - platform: modbus_controller         # 211 Battery Max Discharge current
     use_write_multiple: true
@@ -1291,7 +1294,8 @@ number:
     min_value: 0
     max_value: 125                      # 2 x SunSynk IP65 L5.1 Batteries 100A Charge Limit
     step: 5
-    value_type: U_WORD  
+    value_type: U_WORD
+    entity_category: config
 
   - platform: modbus_controller            # 293 Grid Peak Shaving Power
     use_write_multiple: true
@@ -1304,6 +1308,7 @@ number:
     max_value: 8000
     step: 500
     value_type: U_WORD
+    entity_category: config
 
   - platform: modbus_controller            # 245 Max Sell Power
     use_write_multiple: true
@@ -1316,6 +1321,7 @@ number:
     max_value: 8000
     step: 500
     value_type: U_WORD
+    entity_category: config
  
 
 ################################################ TEMPLATE SENSORS ################################################
