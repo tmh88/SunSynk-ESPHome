@@ -309,12 +309,6 @@ sensor:
     device_class: power
     state_class: measurement
     value_type: S_WORD
-    #filters: #GOOD
-    #  - lambda: |-
-    #          float MIN_VALUE = -10000.0;
-    #          float MAX_VALUE = 10000.0;
-    #          if (MIN_VALUE <= x && x <= MAX_VALUE) return x;
-    #          else return {};
 
   - platform: modbus_controller             # 167 Grid LD Power = L1 seems to be LD
     modbus_controller_id: sunsynk
@@ -327,12 +321,6 @@ sensor:
     device_class: power
     state_class: measurement
     value_type: S_WORD
-    #filters: #GOOD
-    #  - lambda: |-
-    #          float MIN_VALUE = -10000.0;
-    #          float MAX_VALUE = 10000.0;
-    #          if (MIN_VALUE <= x && x <= MAX_VALUE) return x;
-    #          else return {};
 
   - platform: modbus_controller             # 168 Grid L2 Power
     modbus_controller_id: sunsynk
@@ -345,12 +333,6 @@ sensor:
     device_class: power
     state_class: measurement
     value_type: S_WORD
-    #filters: #GOOD
-    #  - lambda: |-
-    #          float MIN_VALUE = -10000.0;
-    #          float MAX_VALUE = 10000.0;
-    #          if (MIN_VALUE <= x && x <= MAX_VALUE) return x;
-    #          else return {};
 
   - platform: modbus_controller            # 150 Grid Voltage
     modbus_controller_id: sunsynk
@@ -391,12 +373,6 @@ sensor:
     device_class: power
     state_class: measurement
     value_type: S_WORD
-    #filters: #GOOD
-    #  - lambda: |-
-    #          float MIN_VALUE = -10000.0;
-    #          float MAX_VALUE = 10000.0;
-    #          if (MIN_VALUE <= x && x <= MAX_VALUE) return x;
-    #          else return {};
 
 #######
 # Load
@@ -1023,6 +999,13 @@ sensor:
     unit_of_measurement: "W"
     value_type: U_WORD
 
+  - platform: modbus_controller        # 255 Grid Peak Shaving RAW register value for SELECT SENSORS below
+    modbus_controller_id: sunsynk
+    id: grid_peak_shaving_raw
+    register_type: holding
+    address: 280
+    value_type: U_WORD
+
 ################################################ WRITE SETTINGS ################################################
 
 switch:
@@ -1133,7 +1116,7 @@ number:
     name: "${friendly_name} Set SoC Timezone1"
     unit_of_measurement: "%"
     address: 268
-    min_value: 0
+    min_value: 10
     max_value: 100
     step: 5
     value_type: U_WORD  
@@ -1145,7 +1128,7 @@ number:
     name: "${friendly_name} Set SoC Timezone2"
     unit_of_measurement: "%"
     address: 269
-    min_value: 0
+    min_value: 10
     max_value: 100
     step: 5
     value_type: U_WORD  
@@ -1157,7 +1140,7 @@ number:
     name: "${friendly_name} Set SoC Timezone3"
     unit_of_measurement: "%"
     address: 270
-    min_value: 0
+    min_value: 10
     max_value: 100
     step: 5
     value_type: U_WORD  
@@ -1169,7 +1152,7 @@ number:
     name: "${friendly_name} Set SoC Timezone4"
     unit_of_measurement: "%"
     address: 271
-    min_value: 0
+    min_value: 10
     max_value: 100
     step: 5
     value_type: U_WORD  
@@ -1181,7 +1164,7 @@ number:
     name: "${friendly_name} Set SoC Timezone5"
     unit_of_measurement: "%"
     address: 272
-    min_value: 0
+    min_value: 10
     max_value: 100
     step: 5
     value_type: U_WORD  
@@ -1193,7 +1176,7 @@ number:
     name: "${friendly_name} Set SoC Timezone6"
     unit_of_measurement: "%"
     address: 273
-    min_value: 0
+    min_value: 10
     max_value: 100
     step: 5
     value_type: U_WORD
@@ -1278,7 +1261,7 @@ number:
     unit_of_measurement: "A"
     address: 230
     min_value: 0
-    max_value: 185
+    max_value: 60                       #House Fuse 60A
     step: 5
     value_type: U_WORD  
 
@@ -1290,7 +1273,7 @@ number:
     unit_of_measurement: "A"
     address: 210
     min_value: 0
-    max_value: 185
+    max_value: 100                      # 2 x SunSynk IP65 L5.1 Batteries 100A Charge Limit
     step: 5
     value_type: U_WORD  
 
@@ -1302,7 +1285,7 @@ number:
     unit_of_measurement: "A"
     address: 211
     min_value: 0
-    max_value: 185
+    max_value: 125                      # 2 x SunSynk IP65 L5.1 Batteries 100A Charge Limit
     step: 5
     value_type: U_WORD  
 
