@@ -80,7 +80,9 @@ modbus_controller:
     update_interval: "5s"
     command_throttle: "50ms"
 
+
 ############################################### BINARY SENSORS ###############################################
+
 binary_sensor:           
   - platform: modbus_controller            # 194 Grid Connected Status
     modbus_controller_id: sunsynk
@@ -757,9 +759,10 @@ sensor:
 
 
 ################################################ READ SETTINGS ################################################
+
   - platform: modbus_controller          # 250 Settings Timezone1
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Timezone1"
+#    name: "${friendly_name} Setting Timezone1"
     id: sunsynk_setting_timezone1
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -772,7 +775,7 @@ sensor:
 
   - platform: modbus_controller          # 251 Settings Timezone2
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Timezone2"
+#    name: "${friendly_name} Setting Timezone2"
     id: sunsynk_setting_timezone2
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -785,7 +788,7 @@ sensor:
 
   - platform: modbus_controller          # 252 Settings Timezone3
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Timezone3"
+#    name: "${friendly_name} Setting Timezone3"
     id: sunsynk_setting_timezone3
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -798,7 +801,7 @@ sensor:
 
   - platform: modbus_controller          # 253 Settings Timezone4
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Timezone4"
+#    name: "${friendly_name} Setting Timezone4"
     id: sunsynk_setting_timezone4
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -807,7 +810,7 @@ sensor:
 
   - platform: modbus_controller          # 254 Settings Timezone5
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Timezone5"
+#    name: "${friendly_name} Setting Timezone5"
     id: sunsynk_setting_timezone5
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -820,7 +823,7 @@ sensor:
 
   - platform: modbus_controller          # 255 Settings Timezone6
     modbus_controller_id: sunsynk
-    name: "${friendly_name} Setting Timezone6"
+#    name: "${friendly_name} Setting Timezone6"
     id: sunsynk_setting_timezone6
     register_type: holding
     skip_updates: ${settings_skipped_updates}
@@ -1005,6 +1008,7 @@ sensor:
     register_type: holding
     address: 280
     value_type: U_WORD
+
 
 ################################################ WRITE SETTINGS ################################################
 
@@ -1313,7 +1317,6 @@ number:
     step: 500
     value_type: U_WORD
  
-    
 
 ################################################ TEMPLATE SENSORS ################################################
 
@@ -1336,9 +1339,11 @@ text_sensor:
         case 4: return std::string("fault");
         default: return std::string("unknown");
       }
-  - platform: template
+ 
+  - platform: template                  # Settings Timezone1
     name: "${friendly_name} Time Slot 1"
     id: sunsynk_time_slot_1
+    icon: "mdi:clock"
     lambda: |-
         int minutes, hours;
         if (id(sunsynk_setting_timezone1).state) {
@@ -1351,9 +1356,11 @@ text_sensor:
         char formatted_time[6];
         snprintf(formatted_time, sizeof(formatted_time), "%02d:%02d", hours, minutes);
         return esphome::optional<std::string>(formatted_time);
-  - platform: template
+
+  - platform: template                  # Settings Timezone2
     name: "${friendly_name} Time Slot 2"
     id: sunsynk_time_slot_2
+    icon: "mdi:clock"
     lambda: |-
         int minutes, hours;
         if (id(sunsynk_setting_timezone2).state) {
@@ -1366,9 +1373,11 @@ text_sensor:
         char formatted_time[6];
         snprintf(formatted_time, sizeof(formatted_time), "%02d:%02d", hours, minutes);
         return esphome::optional<std::string>(formatted_time);
-  - platform: template
+
+  - platform: template                  # Settings Timezone3
     name: "${friendly_name} Time Slot 3"
     id: sunsynk_time_slot_3
+    icon: "mdi:clock"
     lambda: |-
         int minutes, hours;
         if (id(sunsynk_setting_timezone3).state) {
@@ -1381,9 +1390,11 @@ text_sensor:
         char formatted_time[6];
         snprintf(formatted_time, sizeof(formatted_time), "%02d:%02d", hours, minutes);
         return esphome::optional<std::string>(formatted_time);
-  - platform: template
+
+  - platform: template                  # Settings Timezone4
     name: "${friendly_name} Time Slot 4"
     id: sunsynk_time_slot_4
+    icon: "mdi:clock"
     lambda: |-
         int minutes, hours;
         if (id(sunsynk_setting_timezone4).state) {
@@ -1396,9 +1407,11 @@ text_sensor:
         char formatted_time[6];
         snprintf(formatted_time, sizeof(formatted_time), "%02d:%02d", hours, minutes);
         return esphome::optional<std::string>(formatted_time);
-  - platform: template
+
+  - platform: template                  # Settings Timezone5
     name: "${friendly_name} Time Slot 5"
     id: sunsynk_time_slot_5
+    icon: "mdi:clock"
     lambda: |-
         int minutes, hours;
         if (id(sunsynk_setting_timezone5).state) {
@@ -1411,9 +1424,11 @@ text_sensor:
         char formatted_time[6];
         snprintf(formatted_time, sizeof(formatted_time), "%02d:%02d", hours, minutes);
         return esphome::optional<std::string>(formatted_time);
-  - platform: template
+
+  - platform: template                  # Settings Timezone6
     name: "${friendly_name} Time Slot 6"
     id: sunsynk_time_slot_6
+    icon: "mdi:clock"
     lambda: |-
         int minutes, hours;
         if (id(sunsynk_setting_timezone6).state) {
