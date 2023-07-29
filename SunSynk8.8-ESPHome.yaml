@@ -200,6 +200,7 @@ sensor:
     unit_of_measurement: "%"
     accuracy_decimals: 0
     device_class: battery
+    state_class: measurement
     value_type: U_WORD
 
   - platform: modbus_controller            # 190 Battery Output Power
@@ -211,6 +212,7 @@ sensor:
     unit_of_measurement: "W"
     accuracy_decimals: 0
     device_class: power
+    state_class: measurement
     value_type: S_WORD
 
   - platform: modbus_controller            # 191 Battery Output Current
@@ -236,6 +238,7 @@ sensor:
     unit_of_measurement: "%"
     accuracy_decimals: 0
     device_class: battery
+    state_class: measurement
 
 ###########
 # Inverter
@@ -249,6 +252,7 @@ sensor:
     unit_of_measurement: "W"
     accuracy_decimals: 0
     device_class: power
+    state_class: measurement
     value_type: S_WORD
 
   - platform: modbus_controller            # 154 Inverter Voltage
@@ -366,8 +370,8 @@ sensor:
     address: 160
     unit_of_measurement: "A"
     accuracy_decimals: 1
-    device_class: energy
-    state_class: total_increasing
+    device_class: current
+    state_class: measurement
     value_type: U_DWORD_R
     filters:
      - multiply: 0.01
