@@ -1296,7 +1296,7 @@ number:
     unit_of_measurement: "A"
     address: 211
     min_value: 0
-    max_value: 125                      # 2 x SunSynk IP65 L5.1 Batteries 100A Charge Limit
+    max_value: 125                      # 2 x SunSynk IP65 L5.1 Batteries 125A Discharge Limit
     step: 5
     value_type: U_WORD
     entity_category: config
@@ -1326,7 +1326,34 @@ number:
     step: 500
     value_type: U_WORD
     entity_category: config
- 
+
+  - platform: modbus_controller            # 250 Set Start Timezone1 (Currently ESPHome Doesn't Support Input_Datetime)
+    use_write_multiple: true
+    modbus_controller_id: sunsynk
+    name: "${friendly_name} Set Start Timezone1"
+    id: sunsynk_set_start_timezone1
+    address: 250
+    min_value: 0
+    max_value: 2359
+    write_lambda: |-
+        if (x > 32767) return (x - 65535) /1;
+        else return (x) /1;
+    icon: "mdi:clock"
+    entity_category: config
+
+  - platform: modbus_controller            # 251 Set Start Timezone2 (Currently ESPHome Doesn't Support Input_Datetime)
+    use_write_multiple: true
+    modbus_controller_id: sunsynk
+    name: "${friendly_name} Set Start Timezone2"
+    id: sunsynk_set_start_timezone2
+    address: 251
+    min_value: 0
+    max_value: 2359
+    write_lambda: |-
+        if (x > 32767) return (x - 65535) /1;
+        else return (x) /1;
+    icon: "mdi:clock"
+    entity_category: config
 
 ################################################ TEMPLATE SENSORS ################################################
 
