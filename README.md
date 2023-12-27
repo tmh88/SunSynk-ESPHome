@@ -37,6 +37,25 @@ Under the Advance Tab ensure the following settings are set.
 
 ![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/4641d8dc-8c1d-43dc-8bd5-9fc7c54d045b)
 
+## Home Assistant Sensors.
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/4e40d330-c75b-4e63-85e4-fb7a0d046c6a)
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/0908f798-dca5-463e-8943-8493e75a6e39)
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/f9592d58-171e-40f5-b8e7-29be796c736c)
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/5c232b77-ab9a-44dc-9515-f1f7ecec5444)
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/defb8fb8-c872-4492-8885-efc5e764e6a8)
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/1232b788-0735-48ec-b512-598f9044d842)
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/482d19ca-f02a-4635-a1be-2d37faf92526)
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/0321d98f-12a8-40d4-a2b0-d4031d7213e6)
+
+
 
 ## Disclaimer.
 The project is something I have developed and researched myself. I cannot accept any responsibility for any damage caused to your equipment. Please install at your own risk.
