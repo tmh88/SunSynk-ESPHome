@@ -24,11 +24,26 @@ USB power supply and suitable enclosure.
 
 ![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/cb059cfb-b86a-4b3e-90fb-8a866dfeb952)
 
+## 5.5kW & 8.5kW with combind BMS 2in1 Port.
+
 ![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/ed9f2e3b-a0c9-498f-b86a-3d12ec07efef)
 
 The 8kW inverter uses a combined BMS 2in1 Port located below.
 
 ![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/91324677-d395-4286-b9b7-e1a9dc8699b6)
+
+## 5.5kW with Separate CAN & RS485 Ports.
+
+Use Pins 1 & 7 as pin2 isn’t connected on the PCB
+
+Pin1 = Orange/White = (A)
+
+Pin7 = Brown/White = (B)
+
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/fee9901a-87c0-4516-ad39-8ca6d112aaee)
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/6c15d0b7-b05d-4d2e-a625-35e3ad27b5b8)
 
 
 ## Inverter Settings.
