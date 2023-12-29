@@ -1,6 +1,6 @@
 # SunSynk-ESPHome
 
-ESPHome Project to establish communication with SunSynk 8.8KW Inverter via RS485 Modbus.
+ESPHome Project to establish communication with SunSynk 8.8kW & 5.5kW Inverter via RS485 Modbus.
 The code is based on Modbus registers from SunSynk.
 
 
