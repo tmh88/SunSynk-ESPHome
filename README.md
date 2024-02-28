@@ -32,13 +32,24 @@ The 8kW inverter uses a combined BMS 2in1 Port located below.
 
 ![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/91324677-d395-4286-b9b7-e1a9dc8699b6)
 
+## 8.5kW with Separate CAN & RS485 Ports.
+
+Use Pins 1 & 7 as pin2 isn’t connected on the PCB
+
+Pin1 = Orange/White = (B)
+
+Pin7 = Brown/White = (A)
+
+![429611583_1063953981498511_9100867590351926252_n](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/2168618b-2bf2-42f3-8418-2bb3dcd5922c)
+
+
 ## 5.5kW with Separate CAN & RS485 Ports.
 
 Use Pins 1 & 7 as pin2 isn’t connected on the PCB
 
-Pin1 = Orange/White = (A)
+Pin1 = Orange/White = (B)
 
-Pin7 = Brown/White = (B)
+Pin7 = Brown/White = (A)
 
 
 ![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/fee9901a-87c0-4516-ad39-8ca6d112aaee)
