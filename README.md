@@ -40,7 +40,8 @@ Pin1 = Orange/White = (B)
 
 Pin7 = Brown/White = (A)
 
-![429611583_1063953981498511_9100867590351926252_n](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/2168618b-2bf2-42f3-8418-2bb3dcd5922c)
+
+![image](https://github.com/tmh88/SunSynk-ESPHome/assets/64529041/65c486f0-d985-45e3-9633-d67efae04b5b)
 
 
 ## 5.5kW with Separate CAN & RS485 Ports.
