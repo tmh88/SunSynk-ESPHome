@@ -111,24 +111,6 @@ sensor:
     update_interval: 60s
     entity_category: diagnostic
 
-  - platform: modbus_controller            # 013 Firmware Control Board
-    modbus_controller_id: sunsynk
-    name: "${friendly_name} Firmware Control Board"
-    id: sunsynk_firmware_control_board
-    register_type: holding
-    skip_updates: ${settings_skipped_updates}
-    address: 13
-    entity_category: diagnostic
-
-  - platform: modbus_controller            # 014 Firmware Comms Board
-    modbus_controller_id: sunsynk
-    name: "${friendly_name} Firmware Comms Board"
-    id: sunsynk_firmware_comms_board
-    register_type: holding
-    skip_updates: ${settings_skipped_updates}
-    address: 14
-    entity_category: diagnostic
-
   - platform: modbus_controller            # 090 DC Transformer Temperature
     modbus_controller_id: sunsynk
     name: "${friendly_name} DC Transformer Temperature"
@@ -1480,6 +1462,72 @@ text_sensor:
         return esphome::optional<std::string>(formatted_time);
 
 
+  - platform: modbus_controller            # 003-007 Inverter HEX Serial Number
+    modbus_controller_id: sunsynk
+    id: sunsynk_inverter_serial
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    raw_encode: HEXBYTES
+    address: 003
+    register_count: 5
+    response_size: 10
+    internal: true
+
+
+  - platform: template                     # Inverter ASCII Serial Number
+    name: "${friendly_name} Inverter Serial"
+    id: sunsynk_inverter_ascii_serial
+    icon: "mdi:text"
+    entity_category: diagnostic
+    lambda: |-
+      std::string hexData = id(sunsynk_inverter_serial).state;
+
+      // Convert hex-encoded string to ASCII
+      std::string asciiData;
+      for (size_t i = 0; i < hexData.length(); i += 2) {
+        std::string byte = hexData.substr(i, 2);
+        char chr = static_cast<char>(std::stoi(byte, nullptr, 16));
+        asciiData.push_back(chr);
+      }
+
+      return asciiData;
+
+  - platform: modbus_controller            # 013 Inverter MCU Firmware Version
+    modbus_controller_id: sunsynk
+    id: sunsynk_inverter_MCU_version_13
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    raw_encode: HEXBYTES
+    address: 013
+    internal: true
+
+  - platform: modbus_controller            # 015 Inverter MCU Firmware Version
+    modbus_controller_id: sunsynk
+    id: sunsynk_inverter_MCU_version_15
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    raw_encode: HEXBYTES
+    address: 015
+    internal: true
+
+  - platform: template                      # 015-013 Inverter MCU version
+    name: "${friendly_name} Inverter MCU Version"
+    id: sunsynk_inverter_mcu_version
+    icon: "mdi:text"
+    entity_category: diagnostic
+    lambda: |-
+      return id( sunsynk_inverter_MCU_version_15).state + "-" + id(sunsynk_inverter_MCU_version_13).state;
+
+  - platform: modbus_controller             # 016 Inverter LCD Firmware Version
+    modbus_controller_id: sunsynk
+    id: sunsynk_inverter_comm_lcd_firmware_16
+    name: "${friendly_name} Inverter COMM Version"
+    register_type: holding
+    skip_updates: ${settings_skipped_updates}
+    raw_encode: HEXBYTES
+    icon: "mdi:text"
+    entity_category: diagnostic
+    address: 016
 
 ################################################ SELECT SENSORS ################################################
 
