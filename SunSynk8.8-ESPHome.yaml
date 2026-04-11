@@ -30,8 +30,9 @@ api:
  
 # OTA Updates Password
 ota:
-  platform: esphome
-  password: !secret sunsynk_ota_password
+  - platform: esphome
+    password: !secret sunsynk_ota_password
+  - platform: web_server
 
 # Enable Webserver
 web_server:
@@ -39,12 +40,12 @@ web_server:
   auth:
     username: !secret web_server_username
     password: !secret web_server_password
-  ota: true
 
 # Wifi Setup
 wifi:
   ssid: !secret Wifi_SSID
   password: !secret Wifi_Password
+  min_auth_mode: WPA2
 
  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -255,7 +256,7 @@ sensor:
 #    name: "${friendly_name} Battery Pack1 SOC"
 #    id: sunsynk_battery_pack1_soc
 #    register_type: holding
-#    address: 10047
+#    address: 600
 #    unit_of_measurement: "%"
 #    accuracy_decimals: 0
 #    device_class: battery
